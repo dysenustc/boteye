@@ -240,9 +240,10 @@ DEFINE_bool(object_detection, false, "enable object detection");
 void read_api_keys() {
   const char* homepath = getenv("HOME");
   std::string path = "/tmp/keys";
+//  std::string path = "/home/dysen/boteye/XP_release/keys.txt"
   if (homepath) {
     path = std::string(homepath);
-    path += "/XP_release/keys";
+    path += "/boteye/XP_release/keys.txt";
   }
   std::ifstream ifs(path);
   std::string line;
@@ -257,6 +258,7 @@ void read_api_keys() {
       aid = std::string(value);
     }
   }
+  std::cout << "aid: " << aid <<  " ak: " << ak << " sk: " << sk << std::endl;
 
   if (ak == "EMPTY" || sk == "EMPTY" || aid == "EMPTY") {
     LOG(ERROR) << "aid, ak or sk not set in /tmp/keys";
@@ -296,7 +298,7 @@ void face_attribute() {
 
 void face_recognition() {
   aip::Face * aipFace = new aip::Face(aid, ak, sk);
-  Json::Value root = aipFace->identify("xteam", file_content, aip::null);
+  Json::Value root = aipFace->identify("test_group_2", file_content, aip::null);
   if (root["error_code"].asInt() != 0)
     std::cout << root <<std::endl;
   if (root["result"].size() == 0)
@@ -327,9 +329,9 @@ void ocr() {
 
 void thread_apis() {
   while (run_flag) {
-      cv::imwrite("/tmp/1.jpg", *g_img_l_ptr);
-      image_for_api = cv::imread("/tmp/1.jpg", CV_8UC1);
-      aip::get_file_content("/tmp/1.jpg", &file_content);
+      cv::imwrite("/home/dysen/boteye/faceRegister/1.jpg", *g_img_l_ptr);
+      image_for_api = cv::imread("/home/dysen/boteye/faceRegister/1.jpg", CV_8UC1);
+      aip::get_file_content("/home/dysen/boteye/faceRegister/1.jpg", &file_content);
 
       std::vector<std::thread> thread_pool;
       if (FLAGS_face_attribute)
@@ -456,7 +458,7 @@ int main(int argc, char **argv) {
       return -1;
     }
     FLAGS_bow_dic_path =
-        std::string(env_p) + "/XP_release/3rdparty_lib_lean/BOW.proto";
+        std::string(env_p) + "/boteye/XP_release/3rdparty_lib_lean/BOW.proto";
     LOG(INFO) << "bow_dic_path is unset. Try " << FLAGS_bow_dic_path;
   }
   /// Wether or not ESC is pressed

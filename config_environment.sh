@@ -4,7 +4,7 @@ export MASTER_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Set MASTER_DIR="${MASTER_DIR}
 
 # Check if 3rdparty_lib_lean exists
-thirdparty_lib_dir=~/XP_release/3rdparty_lib_lean/lib
+thirdparty_lib_dir=/home/dysen/boteye/XP_release/3rdparty_lib_lean/lib
 if [ ! -d $thirdparty_lib_dir ]; then
   printf "\033[0;31m Cannot find 3rdparty_lib_lean for XP! \n\033[0m"
   return

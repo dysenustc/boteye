@@ -7,7 +7,7 @@
 # $ENV{HOME}/XP_release/3rdparty_lib_lean
 cmake_minimum_required(VERSION 2.8.11)
 
-set(XP_3rdparty_path $ENV{HOME}/XP_release/3rdparty_lib_lean)
+set(XP_3rdparty_path $ENV{HOME}/boteye/XP_release/3rdparty_lib_lean)
 
 if (NOT IS_DIRECTORY ${XP_3rdparty_path})
  message(FATAL_ERROR "Cannot find 3rdparty_lib_lean at ${XP_3rdparty_path}")
@@ -45,5 +45,5 @@ endif()
 
 if(EnableRecognition)
   find_path(JSON_INCLUDE_DIR json PATHS ${XP_3rdparty_path}/include/)
-  find_library(JSON_LIBRARY jsoncpp PATHS ${XP_3rdparty_path}/lib/)
+  find_library(JSON_LIBRARY jsoncpp PATHS ${XP_3rdparty_path}/lib/x86_64-linux-gnu/)
 endif()

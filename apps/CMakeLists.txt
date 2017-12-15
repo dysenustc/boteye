@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 # Set recognition option
-option(EnableRecognition "EnableRecognition" OFF)
+option(EnableRecognition "EnableRecognition" ON)
 if(EnableRecognition)
   add_definitions(-DHAS_RECOGNITION)
 endif()
