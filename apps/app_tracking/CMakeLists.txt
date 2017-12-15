@@ -43,6 +43,7 @@ if(EnableRecognition)
     ${JSON_LIBRARY}
     ${FREETYPE_LIBRARY}
     ${CURL_LIBRARY}
+    ${CRYPTO_LIBRARY}
 )
 endif()
 # ============================================
