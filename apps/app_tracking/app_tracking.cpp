@@ -240,7 +240,7 @@ DEFINE_bool(object_detection, false, "enable object detection");
 void read_api_keys() {
   const char* homepath = getenv("HOME");
   std::string path = "/tmp/keys";
-//  std::string path = "/home/dysen/boteye/XP_release/keys.txt"
+//  std::string path = "/home/ubuntu/boteye/XP_release/keys.txt"
   if (homepath) {
     path = std::string(homepath);
     path += "/boteye/XP_release/keys.txt";
@@ -329,9 +329,9 @@ void ocr() {
 
 void thread_apis() {
   while (run_flag) {
-      cv::imwrite("/home/dysen/boteye/faceRegister/1.jpg", *g_img_l_ptr);
-      image_for_api = cv::imread("/home/dysen/boteye/faceRegister/1.jpg", CV_8UC1);
-      aip::get_file_content("/home/dysen/boteye/faceRegister/1.jpg", &file_content);
+      cv::imwrite("/home/ubuntu/boteye/faceRegister/1.jpg", *g_img_l_ptr);
+      image_for_api = cv::imread("/home/ubuntu/boteye/faceRegister/1.jpg", CV_8UC1);
+      aip::get_file_content("/home/ubuntu/boteye/faceRegister/1.jpg", &file_content);
 
       std::vector<std::thread> thread_pool;
       if (FLAGS_face_attribute)
